@@ -5,11 +5,11 @@ import {
     LLamaConfig,
     LLamaInferenceArguments,
 } from "@llama-node/core";
-import type { LLM } from "../llm";
+import type { ILLM } from "../llm";
 
 export class LLamaRS
     implements
-        LLM<
+        ILLM<
             LLama,
             LLamaConfig,
             LLamaInferenceArguments,
