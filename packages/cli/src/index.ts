@@ -9,12 +9,13 @@ import {
 import yargs from "yargs";
 import path from "path";
 import { existsSync } from "fs";
+import { ChatCommand } from "./chat";
 
 const convertType = ["q4_0", "q4_1", "f16", "f32"] as const;
 
 type ConvertType = typeof convertType[number];
 
-interface CLIInferenceArguments extends LLamaInferenceArguments, LLamaConfig {
+export interface CLIInferenceArguments extends LLamaInferenceArguments, LLamaConfig {
     logger?: boolean;
 }
 
@@ -139,6 +140,7 @@ class ConvertCommand implements yargs.CommandModule<any, any> {
     .scriptName("llama")
     .usage("$0 <cmd> [args]")
     .command(new ConvertCommand())
+    .command(new ChatCommand())
     .command(new InferenceCommand())
     .demandCommand(1, "You need at least one command before moving on")
     .strict()
